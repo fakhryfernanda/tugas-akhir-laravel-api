@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('nilai_rapor', function (Blueprint $table) {
+        Schema::create('nilai_rapors', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_pendaftar');
             $table->integer('indo_1');
@@ -52,6 +52,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nilai_rapor');
+        Schema::dropIfExists('nilai_rapors');
     }
 };

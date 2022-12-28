@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('akun_pendaftar', function (Blueprint $table) {
+        Schema::create('data_awals', function (Blueprint $table) {
             $table->id();
-            $table->string('nik', 16);
-            $table->string('email');
-            $table->text('password');
+            $table->bigInteger('id_pendaftar');
+            $table->string('jalur');
+            $table->string('jurusan');
+            $table->string('sekolah_asal');
+            $table->string('nomor_ijazah');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('akun_pendaftar');
+        Schema::dropIfExists('data_awals');
     }
 };
