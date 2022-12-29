@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('berkas_pendukungs', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_pendaftar');
+            $table->bigInteger('id_pendaftar')->default(1);
             $table->string('kis');
             $table->string('kip');
             $table->string('kks');

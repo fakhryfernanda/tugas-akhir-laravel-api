@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('data_awals', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_pendaftar');
+            $table->bigInteger('id_pendaftar')->default(1);
             $table->string('jalur');
             $table->string('jurusan');
             $table->string('sekolah_asal');

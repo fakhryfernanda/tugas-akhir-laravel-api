@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('orang_tuas', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_pendaftar');
+            $table->bigInteger('id_pendaftar')->default(1);
             $table->string('nama_ayah');
             $table->integer('tahun_lahir_ayah');
             $table->string('pendidikan_ayah');

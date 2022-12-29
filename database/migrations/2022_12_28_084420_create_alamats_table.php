@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('alamats', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_pendaftar');
+            $table->bigInteger('id_pendaftar')->default(1);
             $table->text('alamat_jalan');
             $table->string('kelurahan');
             $table->string('kecamatan');

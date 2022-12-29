@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('data_diris', function (Blueprint $table) {
             $table->id();
             $table->string('nama_lengkap');
-            $table->char('jenis_kelamin');
+            $table->string('jenis_kelamin', 1);
             $table->string('nisn');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
