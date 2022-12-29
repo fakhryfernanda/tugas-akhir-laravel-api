@@ -13,6 +13,53 @@ use App\Http\Controllers\Controller;
 
 class PendaftarController extends Controller
 {
+    function index()
+    {
+        $data_awal = DataAwal::all();
+        $data_diri = DataDiri::all();
+        $alamat = Alamat::all();
+        $berkas_pendukung = BerkasPendukung::all();
+        $orang_tua = OrangTua::all();
+        $nilai_rapor = NilaiRapor::all();
+
+        return response()->json([
+            "status" => true,
+            "message" => "Data berhasil ditambahkan",
+            "data" => [
+                "data_awal" => $data_awal->makeHidden([
+                    "id",
+                    "created_at",
+                    "updated_at"
+                ]),
+                "data_diri" => $data_diri->makeHidden([
+                    "id",
+                    "created_at",
+                    "updated_at"
+                ]),
+                "alamat" => $alamat->makeHidden([
+                    "id",
+                    "created_at",
+                    "updated_at"
+                ]),
+                "berkas_pendukung" => $berkas_pendukung->makeHidden([
+                    "id",
+                    "created_at",
+                    "updated_at"
+                ]),
+                "orang_tua" => $orang_tua->makeHidden([
+                    "id",
+                    "created_at",
+                    "updated_at"
+                ]),
+                "nilai_rapor" => $nilai_rapor->makeHidden([
+                    "id",
+                    "created_at",
+                    "updated_at"
+                ])
+            ]
+        ]);
+    }
+
     function store(Request $request)
     {
         $payload = $request->all();
@@ -228,7 +275,7 @@ class PendaftarController extends Controller
                     "created_at",
                     "updated_at"
                 ]),
-                "data_alamat" => $tabel_alamat->makeHidden([
+                "alamat" => $tabel_alamat->makeHidden([
                     "id",
                     "created_at",
                     "updated_at"
@@ -238,7 +285,7 @@ class PendaftarController extends Controller
                     "created_at",
                     "updated_at"
                 ]),
-                "data_orang_tua" => $tabel_orang_tua->makeHidden([
+                "orang_tua" => $tabel_orang_tua->makeHidden([
                     "id",
                     "created_at",
                     "updated_at"
