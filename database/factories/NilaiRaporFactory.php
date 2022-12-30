@@ -15,16 +15,13 @@ class NilaiRaporFactory extends Factory
      * @return array<string, mixed>
      */
 
-    // Pengennya bikin id manual
-    // public $id_pendaftar  = 0;
-    // public function __construct() {
-    //     $this->id_pendaftar++;
-    // }
+    public static $id_pendaftar  = 0;
     
     public function definition()
     {
+        self::$id_pendaftar++;
         return [
-            "id_pendaftar" => mt_rand(1,100),
+            "id_pendaftar" => self::$id_pendaftar,
             "indo_1" => mt_rand(75, 100),
             "indo_2" => mt_rand(75, 100),
             "indo_3" => mt_rand(75, 100),

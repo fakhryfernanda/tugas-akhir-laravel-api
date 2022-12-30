@@ -14,6 +14,9 @@ class OrangTuaFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
+    public static $id_pendaftar  = 0;
+
     public function definition()
     {
         $pendidikan = [
@@ -42,8 +45,10 @@ class OrangTuaFactory extends Factory
             'pensiunan'
         ];
 
+        self::$id_pendaftar++;
+        
         return [
-            "id_pendaftar" => mt_rand(1,100),
+            "id_pendaftar" => self::$id_pendaftar,
             "nama_ayah" => fake()->name(),
             "tahun_lahir_ayah" => mt_rand(1960, 1985),
             "pendidikan_ayah" => $pendidikan[mt_rand(0,sizeof($pendidikan)-1)],

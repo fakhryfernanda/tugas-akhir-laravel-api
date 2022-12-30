@@ -14,10 +14,14 @@ class AlamatFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
+    public static $id_pendaftar  = 0;
+
     public function definition()
     {
+        self::$id_pendaftar++;
         return [
-            "id_pendaftar" => mt_rand(1,100),
+            "id_pendaftar" => self::$id_pendaftar,
             "alamat_jalan" => fake()->streetAddress(),
             "kelurahan" => fake()->streetName(),
             "kecamatan" => fake()->streetName(),

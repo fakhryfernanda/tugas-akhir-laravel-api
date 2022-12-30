@@ -14,12 +14,16 @@ class DataAwalFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
+    public static $id_pendaftar  = 0;
+    
     public function definition()
     {
         $jurusan = ['ipa', 'ips'];
-
+        self::$id_pendaftar++;
+        
         return [
-            "id_pendaftar" => mt_rand(1,100),
+            "id_pendaftar" => self::$id_pendaftar,
             "jalur" => "akademik",
             "jurusan" => $jurusan[mt_rand(0,1)],
             "sekolah_asal" => 'SMPN ' . strval(mt_rand(1, 40)) . ' Bekasi',
