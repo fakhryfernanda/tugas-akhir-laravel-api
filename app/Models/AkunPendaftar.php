@@ -13,6 +13,8 @@ class AkunPendaftar extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $guarded = ['id'];
+
     protected static function boot()
     {
         parent::boot();
