@@ -20,7 +20,7 @@ class NilaiRaporFactory extends Factory
     public function definition()
     {
         self::$id_pendaftar++;
-        return [
+        $payload = [
             "id_pendaftar" => self::$id_pendaftar,
             "indo_1" => mt_rand(75, 100),
             "indo_2" => mt_rand(75, 100),
@@ -48,5 +48,10 @@ class NilaiRaporFactory extends Factory
             "ips_4" => mt_rand(75, 100),
             "ips_5" => mt_rand(75, 100),
         ];
+
+        $mean = array_sum($payload)/count($payload);
+        $payload['mean'] = $mean;
+
+        return $payload;
     }
 }
