@@ -26,13 +26,15 @@ class DatabaseSeeder extends Seeder
             "nomor_pendaftaran" => "12345678",
             "email" => "mff023@gmail.com",
             "password" => "1234",
-        ]); 
+        ]);
 
-        DataAwal::factory(100)->create();
-        DataDiri::factory(100)->create();
-        Alamat::factory(100)->create();
-        BerkasPendukung::factory(100)->create();
-        OrangTua::factory(100)->create();
-        NilaiRapor::factory(100)->create();
+        $banyak_data = 20;
+
+        DataAwal::factory($banyak_data)->create();
+        DataDiri::factory($banyak_data)->create();
+        Alamat::factory($banyak_data)->create();
+        BerkasPendukung::factory($banyak_data)->create();
+        OrangTua::factory($banyak_data)->create();
+        NilaiRapor::factory($banyak_data)->create();
     }
 }
