@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('akun_pendaftars', function (Blueprint $table) {
             $table->id();
-            $table->string('nik', 16);
-            $table->string('nomor_pendaftaran');
-            $table->string('email');
+            $table->string('nik', 16)->unique();
+            $table->string('nomor_pendaftaran')->unique();
+            $table->string('email')->unique();
             $table->text('password');
             $table->timestamps();
         });
