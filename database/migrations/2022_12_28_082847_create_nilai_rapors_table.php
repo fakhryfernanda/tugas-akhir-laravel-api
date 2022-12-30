@@ -41,6 +41,7 @@ return new class extends Migration
             $table->integer('ips_3');
             $table->integer('ips_4');
             $table->integer('ips_5');
+            $table->decimal('mean')->nullable();
             $table->timestamps();
         });
     }
