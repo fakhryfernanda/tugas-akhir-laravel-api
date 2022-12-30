@@ -32,7 +32,7 @@ class PendaftarController extends Controller
                     "updated_at"
                 ]),
                 "data_diri" => $data_diri->makeHidden([
-                    "id",
+                    // "id",
                     "created_at",
                     "updated_at"
                 ]),
@@ -228,6 +228,10 @@ class PendaftarController extends Controller
             'ips_5' => $payload['ips_5'],
         ];
 
+        // Menghitung nilai rata-rata
+        $mean = array_sum($nilai_rapor)/count($nilai_rapor);
+        $nilai_rapor['mean'] = $mean;
+
         $not_required = [
             'kis',
             'kip',
@@ -253,8 +257,16 @@ class PendaftarController extends Controller
 
         // Foto dianggap string 
         // $payload['foto'] = $request->file("foto")->store("images", "public");
-        
+
         $tabel_data_awal = DataAwal::create($data_awal);
+
+        // Buat id_pendaftar
+        $data_diri['id_pendaftar'] = $tabel_data_awal->id;
+        $alamat['id_pendaftar'] = $tabel_data_awal->id;
+        $berkas_pendukung['id_pendaftar'] = $tabel_data_awal->id;
+        $orang_tua['id_pendaftar'] = $tabel_data_awal->id;
+        $nilai_rapor['id_pendaftar'] = $tabel_data_awal->id;
+
         $tabel_data_diri = DataDiri::create($data_diri);
         $tabel_alamat = Alamat::create($alamat);
         $tabel_berkas_pendukung = BerkasPendukung::create($berkas_pendukung);
