@@ -88,7 +88,7 @@ class PendaftarController extends Controller
                 ->join('orang_tuas', 'data_diris.id', '=', 'orang_tuas.id_pendaftar')
                 ->join('nilai_rapors', 'data_diris.id', '=', 'nilai_rapors.id_pendaftar')
                 ->select('data_diris.*', 'data_awals.*', 'berkas_pendukungs.*', 'orang_tuas.*', 'nilai_rapors.*')
-                ->where('data_diris.id', $id)->first();
+                ->where('data_diris.id_akun', $id)->first();
         
         if (!$data) {
             return response()->json([
@@ -98,7 +98,7 @@ class PendaftarController extends Controller
             ]);
         }
         
-        return response->json([
+        return response()->json([
             "status" => true,
             "message" => "",
             "data" => $data
