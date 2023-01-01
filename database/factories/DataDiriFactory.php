@@ -14,10 +14,14 @@ class DataDiriFactory extends Factory
      *
      * @return array<string, mixed>
      */
+
+    public static $id_akun  = 0;
     public function definition()
     {
+        self::$id_akun++;
         $gender = ['P', 'L'];
         return [
+            'id_akun' => self::$id_akun,
             'nama_lengkap' => fake()->name(),
             'jenis_kelamin' => $gender[mt_rand(0,1)],
             'nisn' => strval(mt_rand(1000000000,9999999999)),
