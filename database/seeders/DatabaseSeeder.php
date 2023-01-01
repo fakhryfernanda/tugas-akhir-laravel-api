@@ -21,15 +21,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        AkunPendaftar::query()->create([
-            "nik" => "3275092303000022",
-            "nomor_pendaftaran" => "12345678",
-            "email" => "mff023@gmail.com",
-            "password" => "1234",
-        ]);
-
         $banyak_data = 20;
 
+        AkunPendaftar::factory($banyak_data)->create();
         DataAwal::factory($banyak_data)->create();
         DataDiri::factory($banyak_data)->create();
         Alamat::factory($banyak_data)->create();
