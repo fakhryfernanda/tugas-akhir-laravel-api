@@ -114,7 +114,6 @@ class AuthController extends Controller
             }
         }
 
-        $payload['password'] = bcrypt($payload['password']);
         $payload['nomor_pendaftaran'] = $nomor_pendaftaran;
 
         $akun_pendaftar = AkunPendaftar::create($payload);
