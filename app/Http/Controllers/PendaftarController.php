@@ -79,6 +79,32 @@ class PendaftarController extends Controller
         ]);
     }
 
+    function detail($id)
+    {
+        $data = DB::table('data_diris')
+                ->join('data_awals', 'data_diris.id', '=', 'data_awals.id_pendaftar')
+                ->join('alamats', 'data_diris.id', '=', 'alamats.id_pendaftar')
+                ->join('berkas_pendukungs', 'data_diris.id', '=', 'berkas_pendukungs.id_pendaftar')
+                ->join('orang_tuas', 'data_diris.id', '=', 'orang_tuas.id_pendaftar')
+                ->join('nilai_rapors', 'data_diris.id', '=', 'nilai_rapors.id_pendaftar')
+                ->select('data_diris.*', 'data_awals.*', 'berkas_pendukungs.*', 'orang_tuas.*', 'nilai_rapors.*')
+                ->where('data_diris.id', $id)->first();
+        
+        if (!$data) {
+            return response()->json([
+                "status" => false,
+                "message" => "Data tidak ditemukan",
+                "data" => null
+            ]);
+        }
+        
+        return response->json([
+            "status" => true,
+            "message" => "",
+            "data" => $data
+        ]);
+    }
+
     function store(Request $request)
     {
         $payload = $request->all();
