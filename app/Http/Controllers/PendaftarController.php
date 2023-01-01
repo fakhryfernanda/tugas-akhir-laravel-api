@@ -152,6 +152,7 @@ class PendaftarController extends Controller
         ];
 
         $data_diri = [
+            'id_akun' => $payload['id_akun'],
             'nama_lengkap' => $payload['nama_lengkap'],
             'jenis_kelamin' => $payload['jenis_kelamin'],
             'nisn' => $payload['nisn'],
@@ -258,16 +259,16 @@ class PendaftarController extends Controller
         // Foto dianggap string 
         // $payload['foto'] = $request->file("foto")->store("images", "public");
 
-        $tabel_data_awal = DataAwal::create($data_awal);
+        $tabel_data_diri = DataDiri::create($data_diri);
 
         // Buat id_pendaftar
-        $data_diri['id_pendaftar'] = $tabel_data_awal->id;
-        $alamat['id_pendaftar'] = $tabel_data_awal->id;
-        $berkas_pendukung['id_pendaftar'] = $tabel_data_awal->id;
-        $orang_tua['id_pendaftar'] = $tabel_data_awal->id;
-        $nilai_rapor['id_pendaftar'] = $tabel_data_awal->id;
+        $data_awal['id_pendaftar'] = $tabel_data_diri->id;
+        $alamat['id_pendaftar'] = $tabel_data_diri->id;
+        $berkas_pendukung['id_pendaftar'] = $tabel_data_diri->id;
+        $orang_tua['id_pendaftar'] = $tabel_data_diri->id;
+        $nilai_rapor['id_pendaftar'] = $tabel_data_diri->id;
 
-        $tabel_data_diri = DataDiri::create($data_diri);
+        $tabel_data_awal = DataAwal::create($data_awal);
         $tabel_alamat = Alamat::create($alamat);
         $tabel_berkas_pendukung = BerkasPendukung::create($berkas_pendukung);
         $tabel_orang_tua = OrangTua::create($orang_tua);
@@ -310,14 +311,5 @@ class PendaftarController extends Controller
             ]
         ]);
 
-        // return response()->json([
-        //     "status" => true,
-        //     "message" => "Author berhasil ditambahkan",
-        //     "data" => $author->makeHidden([
-        //         "id",
-        //         "created_at",
-        //         "updated_at"
-        //     ])
-        // ]);
     }
 }
