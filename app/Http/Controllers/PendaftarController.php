@@ -312,4 +312,26 @@ class PendaftarController extends Controller
         ]);
 
     }
+
+    function dataDiri($id)
+    {
+        $data_diri = DataDiri::where('id_akun', $id)->first();
+
+        if (!$data_diri) {
+            return response()->json([
+                "status" => false,
+                "message" => "Data tidak ditemukan",
+                "data" => null
+            ]);    
+        }
+
+        return response()->json([
+            "status" => true,
+            "message" => "",
+            "data" => $data_diri->makeHidden([
+                'created_at',
+                'updated_at'
+            ])
+        ]);
+    }
 }

@@ -16,3 +16,5 @@ Route::prefix('pendaftar')->group(function(){
     Route::post("/add", [PendaftarController::class, "store"]);
     Route::put("/edit/{id}", [PendaftarController::class, "edit"]);
 });
+
+Route::get("/datadiri/{id}", [PendaftarController::class, "dataDiri"]);
