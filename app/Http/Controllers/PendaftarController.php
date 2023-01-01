@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alamat;
-use App\Models\BerkasPendukung;
 use App\Models\DataAwal;
 use App\Models\DataDiri;
 use App\Models\OrangTua;
 use App\Models\NilaiRapor;
 use Illuminate\Http\Request;
+use App\Models\BerkasPendukung;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class PendaftarController extends Controller
 {
-    function index()
+    function index_()
     {
         $data_awal = DataAwal::all();
         $data_diri = DataDiri::all();
@@ -57,6 +58,24 @@ class PendaftarController extends Controller
                     "updated_at"
                 ])
             ]
+        ]);
+    }
+
+    function index()
+    {
+        $data = DB::table('data_diris')
+                ->join('data_awals', 'data_diris.id', '=', 'data_awals.id_pendaftar')
+                ->join('alamats', 'data_diris.id', '=', 'alamats.id_pendaftar')
+                ->join('berkas_pendukungs', 'data_diris.id', '=', 'berkas_pendukungs.id_pendaftar')
+                ->join('orang_tuas', 'data_diris.id', '=', 'orang_tuas.id_pendaftar')
+                ->join('nilai_rapors', 'data_diris.id', '=', 'nilai_rapors.id_pendaftar')
+                ->select('data_diris.*', 'data_awals.*', 'berkas_pendukungs.*', 'orang_tuas.*', 'nilai_rapors.*')
+                ->get();
+        
+        return response()->json([
+            "status" => true,
+            "message" => "",
+            "data" => $data
         ]);
     }
 
