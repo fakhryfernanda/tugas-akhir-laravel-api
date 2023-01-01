@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('data_diris', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('id_akun');
             $table->string('nama_lengkap');
             $table->string('jenis_kelamin', 1);
             $table->string('nisn');

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('nilai_rapors', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_pendaftar')->default(1);
+            $table->bigInteger('id_pendaftar');
             $table->integer('indo_1');
             $table->integer('indo_2');
             $table->integer('indo_3');
