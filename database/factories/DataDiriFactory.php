@@ -34,7 +34,7 @@ class DataDiriFactory extends Factory
             'nomor_handphone' => fake()->phoneNumber(),
             'email' => fake()->safeEmail(),
             'jumlah_saudara_kandung' => mt_rand(0, 8),
-            'foto' => 'Ini Foto'
+            'foto' => 'https://source.unsplash.com/600x800?male'
         ];
     }
 }
