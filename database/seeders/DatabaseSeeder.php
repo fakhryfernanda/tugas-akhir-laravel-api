@@ -7,6 +7,7 @@ use App\Models\Alamat;
 use App\Models\DataAwal;
 use App\Models\DataDiri;
 use App\Models\OrangTua;
+use App\Models\AkunAdmin;
 use App\Models\NilaiRapor;
 use App\Models\AkunPendaftar;
 use App\Models\BerkasPendukung;
@@ -23,6 +24,7 @@ class DatabaseSeeder extends Seeder
     {
         $banyak_data = 20;
 
+        AkunAdmin::factory($banyak_data)->create();
         AkunPendaftar::factory($banyak_data)->create();
         DataAwal::factory($banyak_data)->create();
         DataDiri::factory($banyak_data)->create();
