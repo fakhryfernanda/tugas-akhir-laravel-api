@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('email');
             $table->integer('jumlah_saudara_kandung');
             $table->text('foto');
+            $table->string('status_kelolosan')->nullable();
             $table->timestamps();
         });
     }
