@@ -69,9 +69,10 @@ class PendaftarController extends Controller
                 ->join('berkas_pendukungs', 'data_diris.id', '=', 'berkas_pendukungs.id_pendaftar')
                 ->join('orang_tuas', 'data_diris.id', '=', 'orang_tuas.id_pendaftar')
                 ->join('nilai_rapors', 'data_diris.id', '=', 'nilai_rapors.id_pendaftar')
-                ->select('data_diris.*', 'data_awals.*', 'berkas_pendukungs.*', 'orang_tuas.*', 'nilai_rapors.*')
-                ->get();
+                ->select('data_diris.*', 'data_awals.*', 'berkas_pendukungs.*', 'orang_tuas.*', 'nilai_rapors.*');
         
+        $data = $data->orderBy('mean', 'desc')->orderBy('tanggal_lahir', 'asc')->get();
+
         return response()->json([
             "status" => true,
             "message" => "",
