@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('kelurahan');
             $table->string('kecamatan');
             $table->string('kota');
-            $table->string('kode_pos', 5);
+            $table->string('kode_pos');
             $table->timestamps();
         });
     }
